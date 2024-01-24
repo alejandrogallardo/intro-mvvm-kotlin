@@ -3,41 +3,32 @@ package com.leksilab.loteria
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.leksilab.loteria.ui.theme.LoteriaTheme
+import com.leksilab.loteria.viewModels.ContadorViewModel
+import com.leksilab.loteria.viewModels.LoteriaViewModel
+import com.leksilab.loteria.views.Contador
+import com.leksilab.loteria.views.LoteriaView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        val viewModel: ContadorViewModel by viewModels()
+        val viewModel: LoteriaViewModel by viewModels()
         setContent {
             LoteriaTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+//                    Contador(viewModel = viewModel)
+                    LoteriaView(viewModel = viewModel)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    LoteriaTheme {
-        Greeting("Android")
     }
 }
